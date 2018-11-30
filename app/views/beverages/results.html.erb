@@ -1,0 +1,87 @@
+<h1>Results</h1>
+
+<h2>Per Day</h2>
+  <table class="table">
+    <tr>
+      <th>Store</th>
+      <th>Drink</th>
+      <th>Price</th>
+      <th>Caffeine</th>
+      <th>Calories</th>
+    </tr>
+    <% @beverages.each do |beverage| %>
+      <tr>
+        <td><%= beverage.brand %></td>
+        <td><%= beverage.name %></td>
+        <td><%= number_to_currency beverage.price %></td>
+        <td><%= beverage.caffeine %>mg</td>
+        <td><%= beverage.calories %></td>
+      </tr>
+    <% end %>
+  </table>
+
+<h2>Per Week</h2>
+  <table class="table">
+    <tr>
+      <th>Store</th>
+      <th>Drink</th>
+      <th>Price</th>
+      <th>Caffeine</th>
+      <th>Calories</th>
+    </tr>
+    <tr>
+      <% @beverages.each do |beverage| %>
+        <tr>
+          <td><%= beverage.brand %></td>
+          <td><%= beverage.name %></td>
+          <td><%= number_to_currency beverage.price * 7 %></td>
+          <td><%= beverage.caffeine * 7 %>mg</td>
+          <td><%= beverage.calories * 7 %></td>
+        </tr>
+      <% end %>
+    </tr>
+  </table>
+
+<h2>Per Month</h2>
+  <table class="table">
+    <tr>
+      <th>Store</th>
+      <th>Drink</th>
+      <th>Price</th>
+      <th>Caffeine</th>
+      <th>Calories</th>
+    </tr>
+    <tr>
+      <% @beverages.each do |beverage| %>
+        <tr>
+          <td><%= beverage.brand %></td>
+          <td><%= beverage.name %></td>
+          <td><%= number_to_currency beverage.price * 30 %></td>
+          <td><%= beverage.caffeine * 30 %>mg</td>
+          <td><%= beverage.calories * 30 %></td>
+        </tr>
+      <% end %>
+    </tr>
+  </table>
+
+<h2>Per Year</h2>
+  <table class="table">
+    <tr>
+      <th>Store</th>
+      <th>Drink</th>
+      <th>Price</th>
+      <th>Caffeine</th>
+      <th>Calories</th>
+    </tr>
+    <tr>
+      <% @beverages.each do |beverage| %>
+        <tr>
+          <td><%= beverage.brand %></td>
+          <td><%= beverage.name %></td>
+          <td><%= number_to_currency beverage.price * 365 %></td>
+          <td><%= beverage.caffeine * 365 %>mg</td>
+          <td><%= beverage.calories * 365 %></td>
+        </tr>
+      <% end %>
+    </tr>
+  </table>

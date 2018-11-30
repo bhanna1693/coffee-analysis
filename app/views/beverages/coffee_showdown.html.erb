@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="page-header">Dunkin' vs Starbucks - a costly decision</h1>
+
+<div class="row">
+  <div class="well col-md-5">
+    <h2>Dunkin'</h2>
+      <table class="table">
+        <tr>
+          <th>Beverage</th>
+          <th>Price</th>
+          <th>Caffeine</th>
+          <th>Calories</th>
+        </tr>
+        <% @beverages.each do |beverage| %>
+          <% if beverage.brand == 'Dunkin' %>
+            <tr>
+              <td><%= beverage.name %></td>
+              <td><%= number_to_currency beverage.price %></td>
+              <td><%= beverage.caffeine %>mg</td>
+              <td><%= beverage.calories %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+
+    <p>*based on Medium sized coffee - 16oz (cold - 24oz)</p>
+  </div>
+
+  <div class="col-md-2">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Click Here to Begin</button>
+  </div>
+
+  <div class="well col-md-5">
+    <h2>Starbucks</h2>
+      <table class="table">
+        <tr>
+          <th>Beverage</th>
+          <th>Price</th>
+          <th>Caffeine</th>
+          <th>Calories</th>
+        </tr>
+        <% @beverages.each do |beverage| %>
+          <% if beverage.brand == 'Starbucks' %>
+            <tr>
+              <td><%= beverage.name %></td>
+              <td><%= number_to_currency beverage.price %></td>
+              <td><%= beverage.caffeine %>mg</td>
+              <td><%= beverage.calories %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+
+    <p>*based on Grande sized coffee - 16oz</p>
+  </div>
+
+</div>
+
+
+<!-- Modal Code -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="myModalLabel">Select a drink</h3>
+      </div>
+
+      <div class="row modal-body">
+        <%= form_with url: results_path, local: true do |form| %>
+          <%= form.select :name, @drinks.collect {|c| [c, c] }, {include_blank: "Please select a drink"}, class: "form-control" %>
+          <%= form.submit "submit", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+        
+    </div>
+  </div>
+</div>

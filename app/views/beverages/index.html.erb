@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Beverages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Brand</th>
+      <th>Beverage</th>
+      <th>Price</th>
+      <th>Caffeine</th>
+      <th>Calories</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @beverages.each do |beverage| %>
+      <tr>
+        <td><%= beverage.brand %></td>
+        <td><%= beverage.name %></td>
+        <td><%= beverage.price %></td>
+        <td><%= beverage.caffeine %></td>
+        <td><%= beverage.calories %></td>
+        <td><%= link_to 'Show', beverage %></td>
+        <td><%= link_to 'Edit', edit_beverage_path(beverage) %></td>
+        <td><%= link_to 'Destroy', beverage, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Beverage', new_beverage_path %>
